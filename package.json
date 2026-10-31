@@ -1,0 +1,14 @@
+{
+  "name": "xiaoc-site",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "pnpm --filter=@xiaoc/web build",
+    "dev": "pnpm --filter=@xiaoc/web dev",
+    "start": "pnpm --filter=@xiaoc/web start",
+    "lint": "pnpm --filter=@xiaoc/web lint"
+  },
+  "devDependencies": {
+    "prettier": "^3.5.0"
+  }
+}
