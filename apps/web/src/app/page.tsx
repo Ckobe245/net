@@ -11,7 +11,7 @@ import { INTRO_LINES } from '@/lib/constants';
 
 export default function WelcomePage() {
   return (
-    <main className="relative min-h-screen bg-[#08080c] text-[#e4e4e7] overflow-hidden selection:bg-[#d4a574]/30 selection:text-white">
+    <main id="top" className="relative min-h-screen bg-[#08080c] text-[#e4e4e7] overflow-hidden selection:bg-[#d4a574]/30 selection:text-white">
       {/* 动态流动光晕背景（Canvas） */}
       <GlowBackground />
 
@@ -21,12 +21,12 @@ export default function WelcomePage() {
       </HeroSection>
 
       {/* 打字机自我介绍（滚动触发） */}
-      <IntroSection>
+      <IntroSection id="intro">
         {(isInView) => <TypewriterText lines={INTRO_LINES} start={isInView} />}
       </IntroSection>
 
       {/* 多平台引流矩阵 */}
-      <PlatformSection />
+      <PlatformSection id="platforms" />
 
       {/* 极简页脚 */}
       <Footer />

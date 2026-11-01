@@ -6,11 +6,19 @@ import PlatformIcon from './PlatformIcon';
 import QRCodeModal from './QRCodeModal';
 import { motion } from 'framer-motion';
 
-export default function PlatformSection() {
+interface PlatformSectionProps {
+  id?: string;
+}
+
+export default function PlatformSection({ id }: PlatformSectionProps) {
   const [modalOpen, setModalOpen] = useState(false);
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
-    <section className="py-16 sm:py-24 px-4 relative z-10 max-w-5xl mx-auto">
+    <section id={id} className="py-16 sm:py-24 px-4 relative z-10 max-w-5xl mx-auto">
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -41,6 +49,36 @@ export default function PlatformSection() {
           />
         ))}
       </div>
+
+      {/* 最后一页：返回首页按钮 */}
+      <motion.div
+        initial={{ opacity: 0, y: 15 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className="mt-14 flex justify-center"
+      >
+        <button
+          type="button"
+          onClick={scrollToTop}
+          className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full glass-panel glass-panel-hover text-zinc-300 hover:text-white border border-white/10 hover:border-[#d4a574]/40 transition-all duration-300 cursor-pointer shadow-lg hover:shadow-[#d4a574]/10"
+        >
+          <motion.svg
+            className="w-4 h-4 text-[#d4a574] group-hover:-translate-y-0.5 transition-transform"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M5 10l7-7m0 0l7 7m-7-7v18"
+            />
+          </motion.svg>
+          <span className="text-sm font-medium tracking-wide">返回首页</span>
+        </button>
+      </motion.div>
 
       <QRCodeModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
     </section>
